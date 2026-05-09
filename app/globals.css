@@ -1,26 +1,203 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sofia);
+
+  /* Brand colors */
+  --color-canvas: #F3F0EE;
+  --color-lifted: #FCFBFA;
+  --color-ink: #141413;
+  --color-charcoal: #262627;
+  --color-slate: #696969;
+  --color-dust: #D1CDC7;
+  --color-ghost: #EEE8DF;
+  --color-purple: #3B0F66;
+  --color-purple-deep: #2A0A4A;
+  --color-purple-soft: #6B3FA0;
+  --color-spark: #F37338;
+  --color-signal: #CF4500;
+  --color-clay: #9A3A0A;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html, body {
+  background: #F3F0EE;
+  color: #141413;
+  font-family: var(--font-sofia), 'Sofia Sans', Arial, sans-serif;
+  font-weight: 450;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+* { box-sizing: border-box; }
+
+::selection {
+  background: #3B0F66;
+  color: #F3F0EE;
+}
+
+/* Ticker animation */
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Arc draw */
+@keyframes drawArc {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* Pulse ring */
+@keyframes pulseRing {
+  0%, 100% { transform: scale(1); opacity: 0.45; }
+  50% { transform: scale(1.08); opacity: 0.8; }
+}
+
+.pulse-ring {
+  animation: pulseRing 3.2s ease-in-out infinite;
+}
+
+/* Dash underline */
+.dashline {
+  border-bottom: 3px dashed #F37338;
+  padding-bottom: 4px;
+}
+
+/* =========================================================
+   RESPONSIVE — Mobile (max-width: 768px)
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  /* Universal section horizontal padding */
+  section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* All multi-column grids collapse to 1 column */
+  .pain-grid,
+  .solution-inner-grid,
+  .hiw-grid,
+  .about-grid,
+  .reviews-grid,
+  .wyg-grid,
+  .scarcity-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  /* Section vertical padding reduction */
+  .section-pad-lg {
+    padding-top: 80px !important;
+    padding-bottom: 56px !important;
+  }
+  .section-pad-md {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+
+  /* Hide decorative elements on mobile */
+  .mob-hide { display: none !important; }
+
+  /* ── Nav ── */
+  .nav-pill {
+    padding: 8px 10px 8px 14px !important;
+    gap: 12px !important;
+  }
+  .nav-logo img {
+    height: 40px !important;
+  }
+  .nav-cta {
+    padding: 10px 16px !important;
+    font-size: 13px !important;
+  }
+
+  /* ── Hero ── */
+  .hero-section {
+    padding-top: 110px !important;
+  }
+  .hero-h1 {
+    font-size: clamp(36px, 10vw, 56px) !important;
+  }
+
+  /* ── Solution section ── */
+  .solution-card {
+    padding: 48px 24px !important;
+    border-radius: 28px !important;
+  }
+
+  /* ── HowItWorks ── */
+  .hiw-connector { display: none !important; }
+
+  /* ── About Me ── */
+  .about-card {
+    border-radius: 28px !important;
+  }
+  .about-portrait-col {
+    min-height: 280px !important;
+    padding: 24px !important;
+  }
+  .about-content-col {
+    padding: 36px 28px !important;
+  }
+  .about-sig-pill {
+    left: 24px !important;
+    bottom: 24px !important;
+  }
+
+  /* ── Guarantee ── */
+  .guarantee-card {
+    padding: 64px 24px !important;
+    border-radius: 28px !important;
+  }
+  .guarantee-headline {
+    font-size: clamp(40px, 10vw, 64px) !important;
+  }
+
+  /* ── What You Get ── */
+  .wyg-deliverables-card {
+    padding: 28px 24px !important;
+  }
+
+  /* ── Final CTA ── */
+  .fcta-card {
+    padding: 64px 24px !important;
+    border-radius: 28px !important;
+  }
+  .fcta-btn {
+    padding: 18px 32px !important;
+    font-size: 16px !important;
+  }
+
+  /* ── Footer ── */
+  .footer-inner {
+    padding: 40px 20px 24px !important;
+  }
+  .footer-top {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* =========================================================
+   RESPONSIVE — Tablet (768px – 1024px)
+   ========================================================= */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .pain-grid {
+    gap: 40px !important;
+  }
+
+  .solution-card {
+    padding: 60px 40px !important;
+  }
+
+  .about-content-col {
+    padding: 48px 40px !important;
+  }
 }
