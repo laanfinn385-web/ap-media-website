@@ -19,7 +19,12 @@
   --color-clay: #9A3A0A;
 }
 
-html, body {
+html {
+  overflow-x: clip; /* clip does not create a scroll container, unlike hidden */
+}
+
+body {
+  overflow-x: clip;
   background: #F3F0EE;
   color: #141413;
   font-family: var(--font-sofia), 'Sofia Sans', Arial, sans-serif;
@@ -27,7 +32,6 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
-  overflow-x: hidden;
 }
 
 * { box-sizing: border-box; }

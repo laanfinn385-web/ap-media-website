@@ -33,7 +33,6 @@ export default function Hero() {
         paddingLeft: 24,
         paddingRight: 24,
         position: "relative",
-        overflow: "hidden",
       }}
     >
       {/* purple ambient glow */}

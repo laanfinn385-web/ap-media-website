@@ -1,11 +1,3 @@
-"use client";
-
-import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(useGSAP);
-
 const SPARK = "#F37338";
 const PURPLE = "#3B0F66";
 
@@ -17,26 +9,10 @@ const items = [
   "Garantie of we werken gratis door",
 ];
 
+// Duplicate so CSS translateX(-50%) creates a seamless loop
+const row = [...items, ...items];
+
 export default function Ticker() {
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    const totalWidth = track.scrollWidth / 2;
-    gsap.to(track, {
-      x: -totalWidth,
-      duration: 40,
-      ease: "none",
-      repeat: -1,
-      modifiers: {
-        x: gsap.utils.unitize((x) => parseFloat(x) % totalWidth),
-      },
-    });
-  }, { scope: trackRef });
-
-  const row = [...items, ...items, ...items, ...items];
-
   return (
     <section
       style={{
@@ -48,11 +24,11 @@ export default function Ticker() {
       }}
     >
       <div
-        ref={trackRef}
         style={{
           display: "flex",
           gap: 48,
           whiteSpace: "nowrap",
+          animation: "ticker-scroll 40s linear infinite",
           willChange: "transform",
         }}
       >
