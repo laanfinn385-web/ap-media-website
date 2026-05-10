@@ -19,10 +19,11 @@ const LIFTED = "#FCFBFA";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const benefits = [
-  "30 content ideeën speciaal voor fitness coaches",
-  "Bewezen hooks die leiden opleveren op Instagram & TikTok",
-  "Klaar-voor-gebruik captions — kopieer en plak",
-  "Hoe je consistent post zonder uren kwijt te zijn",
+  "De 3 contenttypes die direct intakes genereren",
+  "De 7 virale hoekformules die altijd werken",
+  "Scriptstructuren + de volgorde van een goede reel",
+  "Hoe je viral outlier hooks vindt in jouw niche",
+  "Het tweefasen-groeimodel voor Instagram",
 ];
 
 // ── Nav (standalone, no scroll state needed) ──────────────────────────────────
@@ -77,7 +78,7 @@ function LeadForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     setErrorMsg("");
 
@@ -160,7 +161,7 @@ function LeadForm() {
         <div>
           <div style={{ fontSize: 13, fontWeight: 700, color: PURPLE, letterSpacing: "0.04em", textTransform: "uppercase", marginBottom: 2 }}>Gratis PDF</div>
           <div style={{ fontSize: 15, fontWeight: 500, color: INK, lineHeight: 1.3 }}>Volle Agenda Content Gids</div>
-          <div style={{ fontSize: 12, color: "#696969", marginTop: 2 }}>30 content ideeën · direct downloadbaar</div>
+          <div style={{ fontSize: 12, color: "#696969", marginTop: 2 }}>Het exacte systeem · direct downloadbaar</div>
         </div>
       </div>
 
@@ -280,15 +281,15 @@ export default function GratisGids() {
             className="lm-h1"
             style={{ fontSize: "clamp(36px, 5vw, 60px)", lineHeight: 1.02, letterSpacing: "-0.03em", fontWeight: 500, color: INK, margin: "20px 0 24px" }}
           >
-            30 content ideeën die jouw agenda{" "}
-            <span style={{ color: PURPLE }}>vulllen.</span>
+            Het systeem dat fitness coaches dagelijks laat posten én{" "}
+            <span style={{ color: PURPLE }}>intakes boekt.</span>
           </h1>
 
           <p
             className="lm-body"
             style={{ fontSize: 18, lineHeight: 1.6, fontWeight: 450, color: "#262627", margin: "0 0 32px", maxWidth: 460 }}
           >
-            De Volle Agenda Content Gids geeft je 30 bewezen content ideeën, hooks en captions speciaal voor online fitness coaches — zodat je vandaag nog kunt beginnen met posten.
+            De Volle Agenda Content Gids geeft je het exacte systeem om consistente content te maken die volgers omzet in intakegesprekken.
           </p>
 
           <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 14 }}>
